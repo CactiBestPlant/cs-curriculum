@@ -5,19 +5,15 @@ public class Coin : MonoBehaviour
     GameManager Gm;
     private void Start()
     {
-        Gm = FindObjectOfType<GameManager>();
-    }
-
-    
-   private void Update()
+        Gm = FindAnyObjectByType<GameManager>();
+    } 
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        void OnTriggerEnter2D(Collider2D other)
+        if (other.gameObject.CompareTag("Coin"))
         {
-            if (other.gameObject.CompareTag("Coin"))
-            {
-                Gm.coins += 1;
-                print(Gm.coins);
-            }
+            Gm.coins += 1;
+            Destroy(other.gameObject);
+            print(Gm.coins);
         }
     }
 }
