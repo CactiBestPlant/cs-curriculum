@@ -57,13 +57,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            print("You have hit a wall, you heathenous scallywag");
-        }
-    }
+  
 
 
     //for organization, put other built-in Unity functions here

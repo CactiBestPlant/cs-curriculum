@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI healthText;
     public static GameManager Gm;
     
     public int coins;
@@ -9,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        health = 100;
         if (Gm != null && Gm != this)
         {
             Destroy(gameObject);
@@ -19,4 +25,20 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
+    private void Start()
+    {
+        coinsText.text = ("Coins:") + coins;
+        healthText.text = ("Health:") + health;
+    }
+
+    private void Update()
+    {
+        coinsText.text = ("Coins:") + coins;
+        healthText.text = ("Health:") + health;
+    }
 }
+
+
+
+    
