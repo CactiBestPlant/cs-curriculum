@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        coinsText.text = ("Coins:") + coins;
+        coinsText.text = ("Coin:") + coins;
         healthText.text = ("Health:") + health;
     }
 }

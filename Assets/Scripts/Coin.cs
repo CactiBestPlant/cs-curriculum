@@ -9,9 +9,9 @@ public class Coin : MonoBehaviour
     } 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("aaaaahhhh");
         if (other.gameObject.CompareTag("Coin"))
         {
+            print("question");
             Gm.coins += 1;
             Destroy(other.gameObject);
             print(Gm.coins);

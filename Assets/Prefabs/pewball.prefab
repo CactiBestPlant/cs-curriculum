@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -3514862467880035125}
   - component: {fileID: 4327165216284067482}
   m_Layer: 0
-  m_Name: Turret_Projectile
+  m_Name: pewball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
