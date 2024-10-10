@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     float ydirection;
     float yspeed;
     float yvector;
+    public float playerX;
+    public float playerY;
 
     public bool overworld; 
 
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        playerX = transform.position.x;
+        playerY = transform.position.y;
 
         
 
