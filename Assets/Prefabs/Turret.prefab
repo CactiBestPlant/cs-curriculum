@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -8321157105715108983}
   - component: {fileID: -28657926046577547}
   - component: {fileID: 3516214245080040215}
+  - component: {fileID: 7835174682681226978}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -171,3 +172,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2.5
+--- !u!114 &7835174682681226978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040774585044851471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbeb2fa2b2d3a44219afd5bf233e77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPos: {x: 0, y: 0, z: 0}
+  projectileClone: {fileID: 0}
+  maxProjectiles: 0

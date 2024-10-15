@@ -149,9 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPos: {x: 0, y: 0, z: 0}
-  projectilePrefab: {fileID: 5790822057519619805, guid: d181d0f6b0e116b4298e1e64b89f707e,
-    type: 3}
-  fireRate: 1
+  projectileClone: {fileID: 0}
+  maxProjectiles: 0
 --- !u!1001 &186509170
 PrefabInstance:
   m_ObjectHideFlags: 0

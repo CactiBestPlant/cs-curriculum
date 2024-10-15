@@ -18,7 +18,7 @@ public class Turrets : MonoBehaviour
             if (maxProjectiles < 5)
             {
                 Instantiate(projectileClone, spawnPos, Quaternion.identity);
-                projectile cloneScript = projectileClone.GetComponent<projectile>();
+                projectile clonescript = projectileClone.GetComponent<projectile>();
                 maxProjectiles += 1;
             }
             else
