@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 1;
         }
     }
-
     private void Update()
     {
         playerX = transform.position.x;

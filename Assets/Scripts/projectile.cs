@@ -3,36 +3,39 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-    public int speed=5; // Speed of the projectile
     private Vector3 target;
-    private PlayerController playerController;
+    public PlayerController playerController;
+    private int speed = 5;
     private Vector3 current;
     private double lifespan=35;
     private Vector3 direction;
-
+    GameManager Gm;
 
     private void Start()
     {
+        Gm = FindAnyObjectByType<GameManager>();
         playerController = FindFirstObjectByType<PlayerController>();
-        target = new Vector3(PlayerController.playerX, PlayerController.playerY, 0);
-        direction = (target - transform.position).normalized;
+        target = new Vector3(playerController.playerX, playerController.playerY, 0);
+        direction = ((target - transform.position).normalized)*speed;
     }
 
     private void Update()
     {
         lifespan -= Time.deltaTime;
-        transform.position += speed * direction * Time.deltaTime;
+        transform.position +=  (direction * Time.deltaTime);
         if (lifespan < 0)
         {
             Destroy(gameObject);
         }
     }
-
-   // private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-     //   {
-     //       Destroy(gameObject);
-     //   }
-   // }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            Gm.health -= 1;
+            Destroy(other.gameObject);
+            print(Gm.health);
+        }
+    }
 }
