@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -35,7 +36,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         coinsText.text = ("Coin:") + coins;
-        healthText.text = ("Health:") + health;
+        if (health > 0)
+        {
+            healthText.text = ("Health:") + health;
+        }
+        else
+        {
+            healthText.text = ("RESTART SWINE");
+        }
     }
 }
 

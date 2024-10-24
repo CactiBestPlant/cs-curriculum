@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     float yspeed;
     float yvector;
     public float playerX;
-    public float playerY;
+    public float playerY; 
+    GameManager Gm;
 
     public bool overworld; 
 
     private void Start()
     {
+        Gm = FindAnyObjectByType<GameManager>();
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
 
@@ -50,8 +52,6 @@ public class PlayerController : MonoBehaviour
         ydirection = Input.GetAxis("Vertical");
         yvector = ydirection * yspeed * Time.deltaTime;
         transform.Translate(0, yvector, 0);
-        
-        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    
   
 
 

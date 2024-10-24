@@ -7,7 +7,7 @@ public class projectile : MonoBehaviour
     public PlayerController playerController;
     private int speed = 5;
     private Vector3 current;
-    private double lifespan=20;
+    private double lifespan=10;
     private Vector3 direction;
     GameManager Gm;
 
@@ -34,8 +34,15 @@ public class projectile : MonoBehaviour
         if (other.gameObject.CompareTag("Spikes"))
         {
             Gm.health -= 1;
-            Destroy(other.gameObject);
             print(Gm.health);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision other)
+    {
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }
