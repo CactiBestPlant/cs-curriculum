@@ -1,4 +1,7 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,8 +14,11 @@ public class Enemy : MonoBehaviour
     public float state;
     private float changetime;
     private float iframes;
+    private float helt; 
+    PlayerController shtbte;
     void Start()
     {
+        helt = 16;
         iframes = 750;
         playerController = FindFirstObjectByType<PlayerController>();
         gameManager = FindFirstObjectByType<GameManager>();
@@ -22,11 +28,15 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
+        if (helt < 1)
+        {
+            Destroy(gameObject);
+        }
         distance = Vector3.Distance(gameObject.transform.position, target);
         if (distance < 4.25)
         {
             if (distance < 1.25)
-                state = 3;///attack
+                state = 3; ///attack
             else
             {
                 state = 2;///chase
@@ -51,7 +61,7 @@ public class Enemy : MonoBehaviour
             if (iframes < 1)
             {
                 iframes = 750;
-                gameManager.health -= 1;
+                gameManager.health -= 3;
             }
 
             direction = ((target - transform.position).normalized) * 3;
@@ -69,6 +79,15 @@ public class Enemy : MonoBehaviour
             }
 
             transform.position += ((direction * Time.deltaTime) * 0.06f);
+        }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (shtbte.stbte == 1 && other.gameObject.CompareTag("Player"))
+        {
+            helt -= 4;
         }
     }
 }

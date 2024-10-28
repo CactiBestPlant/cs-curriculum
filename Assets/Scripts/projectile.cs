@@ -38,11 +38,5 @@ public class projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision other)
-    {
-        if (other.gameObject.CompareTag("Spikes"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
+    
 }

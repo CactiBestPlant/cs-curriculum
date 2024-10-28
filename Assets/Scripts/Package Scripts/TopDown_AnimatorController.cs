@@ -14,9 +14,11 @@ public class TopDown_AnimatorController : MonoBehaviour
 
     Animator anim;
     SpriteRenderer sprite;
+    
 
     private void Start()
     {
+        
         anim = GetComponent<Animator>();
         anim.runtimeAnimatorController = animShovel;
         sprite = GetComponent<SpriteRenderer>();
@@ -77,10 +79,13 @@ public class TopDown_AnimatorController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             anim.SetTrigger("Attack");
-            anim.SetBool("IsWalking", false);
-        }
 
-        IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
+            anim.SetBool("IsWalking", false);
+
+
+            IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
+        
+        }
 
     }
 

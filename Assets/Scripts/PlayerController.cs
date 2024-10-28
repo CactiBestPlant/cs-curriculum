@@ -10,8 +10,9 @@ public class PlayerController : MonoBehaviour
     float yspeed;
     float yvector;
     public float playerX;
-    public float playerY; 
+    public float playerY;
     GameManager Gm;
+    public float stbte;
 
     public bool overworld; 
 
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
         Gm = FindAnyObjectByType<GameManager>();
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
+
+        stbte = 0;
 
         xdirection = 0;
         xspeed = 5;
@@ -43,7 +46,15 @@ public class PlayerController : MonoBehaviour
         playerX = transform.position.x;
         playerY = transform.position.y;
 
-        
+        if (Input.GetMouseButton(0))
+        {
+            print("J. Jonah Jameson");
+            stbte = 1;
+        }
+        else
+        {
+            stbte = 0;
+        }
 
         xdirection = Input.GetAxis("Horizontal");
         xvector = xdirection * xspeed * Time.deltaTime ;
