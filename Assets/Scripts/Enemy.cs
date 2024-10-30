@@ -16,20 +16,27 @@ public class Enemy : MonoBehaviour
     private float iframes;
     private float helt; 
     PlayerController shtbte;
+    private float spawnPOS;
+    private Vector3 spawnpos;
+    public GameObject Axeitem;
     void Start()
     {
+        spawnpos = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
         helt = 16;
         iframes = 750;
         playerController = FindFirstObjectByType<PlayerController>();
         gameManager = FindFirstObjectByType<GameManager>();
+        shtbte = FindFirstObjectByType<PlayerController>();
         changetime = 100;
         current = transform.position;
         target = new Vector3(playerController.playerX, playerController.playerY,0);
     }
     void Update()
     {
+        
         if (helt < 1)
         {
+            print("die");
             Destroy(gameObject);
         }
         distance = Vector3.Distance(gameObject.transform.position, target);
@@ -85,9 +92,16 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (shtbte.stbte == 1 && other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && shtbte.stbte == 1)
         {
+            
             helt -= 4;
+            print("helt"+helt);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(Axeitem, spawnpos, Quaternion.identity);
     }
 }

@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf40683553c7e4b8498d8d35c2085217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  Axeitem: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
 --- !u!1 &6074370204116875197
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,3 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd8a18f0229a499da6a032e83043ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jigglifier: {fileID: 0}

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float playerY;
     GameManager Gm;
     public float stbte;
+    private float atdu;
 
     public bool overworld; 
 
@@ -45,16 +46,20 @@ public class PlayerController : MonoBehaviour
     {
         playerX = transform.position.x;
         playerY = transform.position.y;
+        atdu -= 1;
+        
 
         if (Input.GetMouseButton(0))
         {
-            print("J. Jonah Jameson");
+           // print("state is one");
             stbte = 1;
         }
         else
         {
+            //print("state is 2");
             stbte = 0;
         }
+      
 
         xdirection = Input.GetAxis("Horizontal");
         xvector = xdirection * xspeed * Time.deltaTime ;
