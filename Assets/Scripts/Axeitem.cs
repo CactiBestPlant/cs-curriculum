@@ -11,15 +11,18 @@ public class Axeitem : MonoBehaviour
    
     void Update()
     {
-        
+        if (hasaxe > 0)
+        {
+            print("Simon is a homosexual");
+        }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Axe"))
+        if (other.gameObject.CompareTag("Player"))
         {
             print("question2");
-            hasaxe = 1;
-            Destroy(other.gameObject);
+            hasaxe += 1;
+            Destroy(gameObject);
             print(" Axe Obtained");
         }
     }

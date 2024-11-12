@@ -37,6 +37,7 @@ public class TopDown_AnimatorController : MonoBehaviour
         {
             SwitchToAxe();
         }
+     
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
@@ -91,6 +92,7 @@ public class TopDown_AnimatorController : MonoBehaviour
             IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
         
         }
+        
 
     }
 

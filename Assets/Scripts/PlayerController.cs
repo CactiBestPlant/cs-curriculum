@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Axeitem har;
     float xdirection;
     float xspeed;
     float xvector;
