@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TopDown_AnimatorController : MonoBehaviour
 {
-    private Axeitem has;
+   
     [SerializeField]
     RuntimeAnimatorController animShovel;
 
@@ -19,7 +19,7 @@ public class TopDown_AnimatorController : MonoBehaviour
 
     private void Start()
     {
-        has = FindFirstObjectByType<Axeitem>();
+        
         anim = GetComponent<Animator>();
         anim.runtimeAnimatorController = animShovel;
         sprite = GetComponent<SpriteRenderer>();
@@ -33,10 +33,7 @@ public class TopDown_AnimatorController : MonoBehaviour
 
     private void Update()
     {
-        if (has.hasaxe == 1)
-        {
-            SwitchToAxe();
-        }
+      
      
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {

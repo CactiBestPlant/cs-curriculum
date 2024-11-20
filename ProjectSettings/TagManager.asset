@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - Wall
   - pewball
+  - door
   layers:
   - Default
   - TransparentFX

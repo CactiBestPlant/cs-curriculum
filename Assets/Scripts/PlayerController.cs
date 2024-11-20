@@ -1,11 +1,14 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Axeitem har;
+    
     float xdirection;
     float xspeed;
     float xvector;
+    Axeitem has;
 
     float ydirection;
     float yspeed;
@@ -14,13 +17,13 @@ public class PlayerController : MonoBehaviour
     public float playerY;
     GameManager Gm;
     public float stbte;
-    private float atdu;
 
     public bool overworld; 
 
     private void Start()
     {
         Gm = FindAnyObjectByType<GameManager>();
+        has = FindFirstObjectByType<Axeitem>();
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
 
@@ -47,13 +50,14 @@ public class PlayerController : MonoBehaviour
     {
         playerX = transform.position.x;
         playerY = transform.position.y;
-        atdu -= 1;
+        
         
 
         if (Input.GetMouseButton(0))
         {
            // print("state is one");
             stbte = 1;
+            
         }
         else
         {
@@ -77,8 +81,14 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    
-  
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (stbte == 1 && other.gameObject.CompareTag("door"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 
 
     //for organization, put other built-in Unity functions here
