@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    public GameObject fireball;
     float xdirection;
     float xspeed;
     float xvector;
     Axeitem has;
+    
+    private float attacktype;
+    private Vector3 spawnpos;
+    public float flimit;
+    
 
     float ydirection;
     float yspeed;
@@ -22,12 +27,16 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        flimit = 0;
         Gm = FindAnyObjectByType<GameManager>();
         has = FindFirstObjectByType<Axeitem>();
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
 
         stbte = 0;
+
+        attacktype = 1;
+        
 
         xdirection = 0;
         xspeed = 5;
@@ -51,7 +60,12 @@ public class PlayerController : MonoBehaviour
         playerX = transform.position.x;
         playerY = transform.position.y;
         
-        
+        spawnpos = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            attacktype *= -1;
+        }
 
         if (Input.GetMouseButton(0))
         {
@@ -63,6 +77,14 @@ public class PlayerController : MonoBehaviour
         {
             //print("state is 2");
             stbte = 0;
+        }
+
+        if (attacktype == -1 && stbte==1)
+        {
+            Instantiate(fireball, spawnpos, Quaternion.identity);
+            flimit += 1;
+            //magic clonescript = fireball.GetComponent<magic>();
+            //clonescript
         }
       
 
