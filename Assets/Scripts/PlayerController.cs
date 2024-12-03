@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
     private float attacktype;
     private Vector3 spawnpos;
     public float flimit;
+    private float mrate;
+    
+    public Vector3 forwardDirection;
+    public float magclear;
+    private float magclearclear;
     
 
     float ydirection;
@@ -27,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        mrate = 5;
+        magclear = 0;
         flimit = 0;
         Gm = FindAnyObjectByType<GameManager>();
         has = FindFirstObjectByType<Axeitem>();
@@ -57,14 +64,18 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        mrate -= Time.deltaTime;
         playerX = transform.position.x;
         playerY = transform.position.y;
+        
+        Vector3 forwardDirection = transform.forward;
         
         spawnpos = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             attacktype *= -1;
+            print("attack type=" + attacktype);
         }
 
         if (Input.GetMouseButton(0))
@@ -79,12 +90,33 @@ public class PlayerController : MonoBehaviour
             stbte = 0;
         }
 
-        if (attacktype == -1 && stbte==1)
+        if (attacktype == -1 && stbte == 1 && flimit < 2 && mrate<1)
         {
             Instantiate(fireball, spawnpos, Quaternion.identity);
             flimit += 1;
-            //magic clonescript = fireball.GetComponent<magic>();
-            //clonescript
+            magic clonescript = fireball.GetComponent<magic>();
+            mrate = 5;
+            print("check");
+        }
+        
+        if (flimit > 1)
+        {
+            magclear = 1;
+            flimit = 0;
+        }
+       //below point does not currently work. fix next time
+        if (magclear == 1)
+        {
+            magclearclear = 1;
+        }
+        else
+        {
+            magclearclear = 0;
+        }
+
+        if (magclearclear == 1)
+        {
+            magclear = 0;
         }
       
 
