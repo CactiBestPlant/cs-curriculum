@@ -17,7 +17,7 @@ public class magic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += pcode.forwardDirection * speed * Time.deltaTime;
+        transform.position += pcode.fullForwardDirection * speed * Time.deltaTime;
         presence -= Time.deltaTime;
         if (presence <= 0)
         {

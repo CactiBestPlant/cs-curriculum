@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float flimit;
     private float mrate;
     
-    public Vector3 forwardDirection;
+    public Vector3 fullForwardDirection;
     public float magclear;
     private float magclearclear;
     
@@ -67,10 +68,12 @@ public class PlayerController : MonoBehaviour
         mrate -= Time.deltaTime;
         playerX = transform.position.x;
         playerY = transform.position.y;
+
+        Quaternion rotation = transform.rotation;
         
-        Vector3 forwardDirection = transform.forward;
+        Vector3 fullForwardDirection = rotation * Vector3.forward;
         
-        spawnpos = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
+        spawnpos = new Vector3(transform.position.x, transform.position.y + 0.5f, 1);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour
             flimit += 1;
             magic clonescript = fireball.GetComponent<magic>();
             mrate = 5;
-            print("check");
+            print("check...forwarddirection="+this.fullForwardDirection);
         }
         
         if (flimit > 1)
