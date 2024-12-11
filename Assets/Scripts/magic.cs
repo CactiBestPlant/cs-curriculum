@@ -4,20 +4,25 @@ public class magic : MonoBehaviour
 {
     private float speed;
     private PlayerController pcode;
+    private float fdirectionx;
+    private float fdirectiony;
 
     private float presence;
    
     void Start()
     {
+       
         pcode = FindAnyObjectByType<PlayerController>();
+        fdirectionx = pcode.xdirection;
+        fdirectiony = pcode.ydirection;
         presence = 300;
-        speed = 5;
+        speed = 0.05f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += pcode.fullForwardDirection * speed * Time.deltaTime;
+        transform.Translate(fdirectionx * speed, fdirectiony*speed,0) ; 
         presence -= Time.deltaTime;
         if (presence <= 0)
         {
@@ -27,6 +32,7 @@ public class magic : MonoBehaviour
         if (pcode.magclear == 1)
         {
             Destroy(gameObject);
+            pcode.magclear = 0;
         }
     }
 }

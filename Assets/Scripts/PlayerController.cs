@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject fireball;
-    float xdirection;
+    public float xdirection;
     float xspeed;
     float xvector;
     Axeitem has;
@@ -16,18 +16,18 @@ public class PlayerController : MonoBehaviour
     public float flimit;
     private float mrate;
     
-    public Vector3 fullForwardDirection;
     public float magclear;
     private float magclearclear;
     
 
-    float ydirection;
+    public float ydirection;
     float yspeed;
     float yvector;
     public float playerX;
     public float playerY;
     GameManager Gm;
     public float stbte;
+    
 
     public bool overworld; 
 
@@ -65,13 +65,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        
         mrate -= Time.deltaTime;
         playerX = transform.position.x;
         playerY = transform.position.y;
-
-        Quaternion rotation = transform.rotation;
-        
-        Vector3 fullForwardDirection = rotation * Vector3.forward;
+       
         
         spawnpos = new Vector3(transform.position.x, transform.position.y + 0.5f, 1);
 
@@ -99,7 +97,6 @@ public class PlayerController : MonoBehaviour
             flimit += 1;
             magic clonescript = fireball.GetComponent<magic>();
             mrate = 5;
-            print("check...forwarddirection="+this.fullForwardDirection);
         }
         
         if (flimit > 1)
@@ -107,20 +104,7 @@ public class PlayerController : MonoBehaviour
             magclear = 1;
             flimit = 0;
         }
-       //below point does not currently work. fix next time
-        if (magclear == 1)
-        {
-            magclearclear = 1;
-        }
-        else
-        {
-            magclearclear = 0;
-        }
-
-        if (magclearclear == 1)
-        {
-            magclear = 0;
-        }
+       
       
 
         xdirection = Input.GetAxis("Horizontal");
