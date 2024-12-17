@@ -100,6 +100,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("magic"))
+        {
+            helt -= 8;
+            print("helt"+helt);
+        } 
+    }
+
     private void OnDestroy()
     {
         Instantiate(Axeitem, spawnpos, Quaternion.identity);

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class magic : MonoBehaviour
@@ -15,8 +16,8 @@ public class magic : MonoBehaviour
         pcode = FindAnyObjectByType<PlayerController>();
         fdirectionx = pcode.xdirection;
         fdirectiony = pcode.ydirection;
-        presence = 300;
-        speed = 0.05f;
+        presence = 100;
+        speed = 0.025f;
     }
 
     // Update is called once per frame
@@ -29,10 +30,21 @@ public class magic : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (pcode.magclear == 1)
+        if (pcode.attacktype == 1)
         {
             Destroy(gameObject);
-            pcode.magclear = 0;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+
+
 }
+

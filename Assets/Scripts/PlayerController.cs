@@ -11,12 +11,10 @@ public class PlayerController : MonoBehaviour
     float xvector;
     Axeitem has;
     
-    private float attacktype;
+    public float attacktype;
     private Vector3 spawnpos;
-    public float flimit;
     private float mrate;
     
-    public float magclear;
     private float magclearclear;
     
 
@@ -34,8 +32,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         mrate = 5;
-        magclear = 0;
-        flimit = 0;
         Gm = FindAnyObjectByType<GameManager>();
         has = FindFirstObjectByType<Axeitem>();
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
@@ -91,19 +87,14 @@ public class PlayerController : MonoBehaviour
             stbte = 0;
         }
 
-        if (attacktype == -1 && stbte == 1 && flimit < 2 && mrate<1)
+        if (attacktype == -1 && stbte == 1 && mrate<1)
         {
             Instantiate(fireball, spawnpos, Quaternion.identity);
-            flimit += 1;
             magic clonescript = fireball.GetComponent<magic>();
             mrate = 5;
         }
         
-        if (flimit > 1)
-        {
-            magclear = 1;
-            flimit = 0;
-        }
+        
        
       
 

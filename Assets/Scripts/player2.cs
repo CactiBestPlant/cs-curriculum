@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class player2 : MonoBehaviour
+public class PlatScript : MonoBehaviour
 {
     Collider2D collider2d;
     Rigidbody2D rb;
     public float length;
     public int jump;
-
+    public float playerX;
+    public float playerY;
+    public int canJump;
     void Start()
     {
         jump = 0;
@@ -17,6 +19,8 @@ public class player2 : MonoBehaviour
 
     void Update()
     {
+        playerX = transform.position.x;
+        playerY = transform.position.y;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jump = 1;  // Set jump flag when Space is pressed
@@ -44,5 +48,11 @@ public class player2 : MonoBehaviour
             // If the ray hits something and the player presses jump, apply the jump force
             rb.AddForce(Vector2.up * 350); // Jump force
         }
+
+        if (leftRay.collider != null || rightRay.collider != null)
+        {
+            canJump = 1;
+        }
+        else canJump = 0;
     }
 }
